@@ -1,0 +1,8 @@
+#!/bin/sh
+MESSAGE=$1
+if [[ "$MESSAGE" == *\[email\]* ]]; then
+        echo "commit messag check ok"
+else
+        echo "your commit message needs to include [email]"
+		exit 1
+fi
