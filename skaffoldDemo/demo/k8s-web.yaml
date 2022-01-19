@@ -4,8 +4,8 @@ metadata:
   name: web
 spec:
   ports:
-  - port: 8080
-    name: http
+    - port: 8080
+      name: http
   type: LoadBalancer
   selector:
     app: web
@@ -24,7 +24,7 @@ spec:
         app: web
     spec:
       containers:
-      - name: web
-        image: skaffold-spring-boot-example
-        ports:
-          - containerPort: 8080
+        - name: web
+          image: skaffold-spring-boot-example
+          ports:
+            - containerPort: 8080
