@@ -16,3 +16,10 @@
 
   ```run mvn -N io.takari:maven:wrapper```
   * Failed to execute goal com.google.cloud.tools:jib-maven-plugin:3.1.4:dockerBuild (default-cli) on project skaffold-spring-boot-example: Main class was not found, perhaps you should add a `mainClass` configuration to jib-maven-plugin
+  
+  ``` 
+  add this tag in the <container>
+  <mainClass>main.hello.Application</mainClass>
+```
+
+  * ```[web-56f866ff75-6p7qw web] Error: Could not find or load main class main.hello.Application```
