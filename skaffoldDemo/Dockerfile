@@ -8,5 +8,6 @@ FROM alpine:3
 # Define GOTRACEBACK to mark this container as using the Go language runtime
 # for `skaffold debug` (https://skaffold.dev/docs/workflows/debug/).
 ENV GOTRACEBACK=single
+ENV RUN_TIME=test                                                                                                    
 CMD ["./app"]
 COPY --from=builder /app .
