@@ -5,14 +5,14 @@ metadata:
 build:
   artifacts:
   - image: skaffold-webflux-example
-    custom:
-      buildCommand: ./build.sh
+    # custom:
+    #   buildCommand: ./build.sh
     # docker:
     #   dockerfile: Dockerfile
-    # jib:
-    #   project: com.javademo:javademo
-  cluster: {}
-  # local: {}
+    jib:
+      project: com.javademo:javademo
+  # cluster: {}
+  local: {}
     
 # deploy:
 #   kubectl:
@@ -29,3 +29,8 @@ deploy:
           image: skaffold-webflux-example
         imageStrategy:
           helm: {}
+
+test:
+  - image: skaffold-webflux-example
+    structureTests:
+      - './structure-test/*'
