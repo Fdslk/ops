@@ -3,6 +3,9 @@ kind: Config
 metadata:
   name: rxjavademo
 build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.FOO}}"
   artifacts:
   - image: skaffold-webflux-example
     # custom:
