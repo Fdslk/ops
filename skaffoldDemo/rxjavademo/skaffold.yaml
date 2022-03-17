@@ -14,6 +14,12 @@ build:
     #   dockerfile: Dockerfile
     jib:
       project: com.javademo:javademo
+    # sync:
+    #   manual:
+    #     - dest: ./*.md
+    #       src: /etc
+    # sync: 
+    #   auto: true
   # cluster: {}
   local: {}
     
@@ -23,6 +29,7 @@ build:
 #     - k8s-web.yaml
 
 deploy:
+  statusCheckDeadlineSeconds: 20
   helm:
     releases:
       - name: my-release
@@ -40,3 +47,10 @@ test:
     custom:
       - command: ./scripts/test.sh
         timeoutSeconds: 60
+
+portForward:
+- resourceType: deployment
+  resourceName: skaffold-webflux-example-web
+  namespace: default
+  port: 8080
+  localPort: 8080      
