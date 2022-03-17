@@ -17,6 +17,6 @@ fileExistenceTests:
 
 # check that the apt-packages text file exists and has the correct permissions
   - name: 'apt packages'
-    path: '/app/src/main/resources/application.properties'
+    path: '/app/resources/application.properties'
     shouldExist: true
     permissions: '-rw-r--r--'

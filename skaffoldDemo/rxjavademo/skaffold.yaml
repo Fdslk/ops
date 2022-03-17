@@ -35,8 +35,8 @@ deploy:
 
 test:
   - image: skaffold-webflux-example
-    # structureTests:
-    #   - './structure-test/*'
+    structureTests:
+      - './structure-test/*'
     custom:
       - command: ./scripts/test.sh
         timeoutSeconds: 60
