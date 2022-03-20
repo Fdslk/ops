@@ -18,8 +18,8 @@ build:
     #   manual:
     #     - dest: ./*.md
     #       src: /etc
-    # sync: 
-    #   auto: true
+    sync: 
+      auto: true
   # cluster: {}
   local: {}
     
