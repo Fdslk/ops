@@ -13,20 +13,25 @@ build:
     # docker:
     #   dockerfile: Dockerfile
     jib:
-      project: com.javademo:javademo
+      # project: com.javademo:javademo
+      args:
+      # - --no-transfer-progress
+      - -Psync
     # sync:
     #   manual:
     #     - dest: ./*.md
     #       src: /etc
     sync: 
       auto: true
+      # infer:
+      #   - "src/main/java/com/example/javademo/*.java"
   # cluster: {}
   local: {}
     
 # deploy:
-#   kubectl:
-#     manifests:
-#     - k8s-web.yaml
+#    kubectl:
+#      manifests:
+#      - k8s-web.yaml
 
 deploy:
   statusCheckDeadlineSeconds: 20
@@ -40,13 +45,13 @@ deploy:
         imageStrategy:
           helm: {}
 
-test:
-  - image: skaffold-webflux-example
-    structureTests:
-      - './structure-test/*'
-    custom:
-      - command: ./scripts/test.sh
-        timeoutSeconds: 60
+# test:
+#   - image: skaffold-webflux-example
+#     structureTests:
+#       - './structure-test/*'
+#     custom:
+#       - command: ./scripts/test.sh
+#         timeoutSeconds: 60
 
 portForward:
 - resourceType: deployment
