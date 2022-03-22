@@ -5,3 +5,5 @@
 * skaffold
 
 * helm
+
+* nginx
