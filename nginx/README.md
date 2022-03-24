@@ -27,6 +27,6 @@
     * proxy_connect (NGINX和backend链接时，会有healthcheck，检查这个backend service是否正常工作，尽可能把这个设置的小，一般来说，**不要超过75s**)
     * proxy_send （定义为两次连续的写操作之间的时间，接下来的是content超过了设置的时间没有发送给backend，这样nginx到backend的链接就会超时，关闭）
       * 可以释放当前链接，以供其他的client建立链接
-    * proxy_read （和写超时相反，nginx读后端返回数据时超时）
-    * proxy_next_upstream
-    * keepalive  
+    * proxy_read （和写超时相反，nginx读后端返回数据时超时, 返回数据的时间太慢，proxy nginx将会关闭链接，有利于节约链接时长）
+    * proxy_next_upstream （默认0s，一般设置在4-5s左右，不需要太长的时候去决定使用哪一个上游服务）
+    * keepalive （减少空闲时间，如果太长时间没有数据的传输，关闭链接，一般设置为60s）
