@@ -39,3 +39,7 @@
 
 ## how to use
   * There are three main ways for a Pod to use a Secret:
+    * As files in a volume mounted on one or more of its containers.
+      * 
+    * As container environment variable.
+    * By the kubelet when pulling images for the Pod.
