@@ -33,6 +33,9 @@
       * ```kubectl get secret db-user-pass -o jsonpath='{.data}'```
     * encode secretbox
       * ```kubectl delete secret <secret name>```
+  * create secret from configuration
+    * create secret yaml file
+    * run ```kubecte apply -f <your secert yaml>```
 
 ## how to use
   * There are three main ways for a Pod to use a Secret:
