@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: mypod
+    image: redis
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    volumeMounts:
+      - mountPath: "etc/podsecret"
+        name: podsecret
+        readOnly: true
+  volumes:
+    - name: podsecret
+      secret:
+        secretName: databasesecret
+        optional: false
+        defaultMode: 0400
