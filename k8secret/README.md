@@ -26,7 +26,8 @@
       --from-file=./password.txt
     ```
   * from command line
-    *```
+    *
+      ```
       kubectl create secret generic db-user-pass \
       --from-literal=username=devuser \
       --from-literal=password='S!B\*d$zDsb='
@@ -35,7 +36,7 @@
     * ```kubectl get secret db-user-pass -o jsonpath='{.data}'```
   * encode secretbox
     * ```kubectl delete secret <secret name>```
-* create secret from configuration
+* create secret from configurationgst
   * create secret yaml file
   * run ```kubectl apply -f <your secert yaml>```
 
