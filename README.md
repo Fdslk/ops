@@ -7,3 +7,6 @@
 * helm
 
 * nginx
+
+* k8s
+  * secret 
