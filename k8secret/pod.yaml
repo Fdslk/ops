@@ -10,13 +10,26 @@ spec:
       limits:
         memory: "128Mi"
         cpu: "500m"
-    volumeMounts:
-      - mountPath: "etc/podsecret"
-        name: podsecret
-        readOnly: true
-  volumes:
-    - name: podsecret
-      secret:
-        secretName: databasesecret
-        optional: false
-        defaultMode: 0400
+    env:
+    - name: SECRET_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: databasesecret
+          key: username
+          optional: false
+    - name: SECRET_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: databasesecret
+          key: password
+          optional: false
+  #   volumeMounts:
+  #     - mountPath: "etc/podsecret"
+  #       name: podsecret
+  #       readOnly: true
+  # volumes:
+  #   - name: podsecret
+  #     secret:
+  #       secretName: databasesecret
+  #       optional: false
+  #       defaultMode: 0400

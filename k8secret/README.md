@@ -50,4 +50,6 @@
       * use cmd ```kubectl exec <pod name> -it bash```, get into the pods and cd to **/etc/podsecret**
       ![mounted secret](https://user-images.githubusercontent.com/6279298/163657055-a34866d1-dcbf-4906-9e1a-0475821185d0.png)
   * As container environment variable.
+    * add env section
+    ![get env](https://user-images.githubusercontent.com/6279298/163657778-d357e775-7bfc-4c12-a9f2-8f5e7d7d5b28.png)
   * By the kubelet when pulling images for the Pod.
