@@ -1,0 +1,10 @@
+@startuml
+actor User #red
+
+network -> TLS: encryption
+TLS --> Varnish: handle http request & response
+Varnish -> BackendService: provides caching, policy, analytics, visibility and mitigation for your webtraffic.
+BackendService --> Varnish
+Varnish --> TLS
+TLS --> network
+@enduml
