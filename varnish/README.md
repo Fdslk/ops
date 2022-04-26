@@ -50,3 +50,5 @@
         ```
         docker run -it --tmpfs /var/lib/varnish/varnishd:exec -p 8081:80 local-varnish
         ```
+    * docker-compose
+  * in local k8s
