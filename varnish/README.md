@@ -19,12 +19,25 @@
 
 * **How** to install varnish
   * ```brew install varnish```
-  * ```https://www.varnish-software.com/developers/tutorials/running-varnish-docker/```
+  * ```sudo mv  /usr/local/opt/varnish/sbin/varnishd /usr/local/bin/```
+  * then varnishd can be executed directly
 
 * **How** to use varnish
-  * add default.vcl file
-  * run the following cmd ```varnishd -a :6081,HTTP -f default.vcl -F```
-    * -a listening port
-    * -f configuration file location
-    * -F run varnish in the front
-  * call the ```127.0.0.1/api/public``` for testing
+  * in local
+    * add default.vcl file
+    * run the following cmd ```varnishd -a :6081,HTTP -f default.vcl -F```
+      * -a listening port
+      * -f configuration file location
+      * -F run varnish in the front
+    * call the ```127.0.0.1/api/public``` for testing
+  * by docker
+    * use docker cmd directly
+    ```
+    docker run --rm -v $(PWD)/default.vcl:/etc/varnish/default.vcl:ro \  
+        --tmpfs /var/lib/varnish/varnishd:exec \
+        --name my-varnish-container \
+        -p 8081:80 \
+        -e VARNISH_SIZE=2G \
+        varnish
+    ```
+    * varnish proxy the local machine service, the host of vcl should be set as **"docker.mac.for.localhost"**.
