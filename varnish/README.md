@@ -18,5 +18,13 @@
     * full control of every request
 
 * **How** to install varnish
+  * ```brew install varnish```
+  * ```https://www.varnish-software.com/developers/tutorials/running-varnish-docker/```
 
 * **How** to use varnish
+  * add default.vcl file
+  * run the following cmd ```varnishd -a :6081,HTTP -f default.vcl -F```
+    * -a listening port
+    * -f configuration file location
+    * -F run varnish in the front
+  * call the ```127.0.0.1/api/public``` for testing
