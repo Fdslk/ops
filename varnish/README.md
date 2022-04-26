@@ -32,12 +32,21 @@
     * call the ```127.0.0.1/api/public``` for testing
   * by docker
     * use docker cmd directly
-    ```
-    docker run --rm -v $(PWD)/default.vcl:/etc/varnish/default.vcl:ro \  
-        --tmpfs /var/lib/varnish/varnishd:exec \
-        --name my-varnish-container \
-        -p 8081:80 \
-        -e VARNISH_SIZE=2G \
-        varnish
-    ```
-    * varnish proxy the local machine service, the host of vcl should be set as **"docker.mac.for.localhost"**.
+      ```
+      docker run --rm -v $(PWD)/default-docker.vcl:/etc/varnish/default.vcl:ro \  
+          --tmpfs /var/lib/varnish/varnishd:exec \
+          --name my-varnish-container \
+          -p 8081:80 \
+          -e VARNISH_SIZE=2G \
+          varnish
+      ```
+      * varnish proxy the local machine service, the host of vcl should be set as **"docker.mac.for.localhost"**.
+      * tips:
+        * varnish port in docker is **80**
+    * use docker file
+      * create a docker file
+      * mount the vcl file into your custom image
+      * run your custom image
+        ```
+        docker run -it --tmpfs /var/lib/varnish/varnishd:exec -p 8081:80 local-varnish
+        ```
