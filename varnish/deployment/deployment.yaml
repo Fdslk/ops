@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp
+  name: varnish-svc
 spec:
   selector:
-    app: myapp
+    app: varnish-svc
   ports:
   - port: 6081
     targetPort: 80
@@ -13,18 +13,28 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: varnish-proxy
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: varnish-proxy
   template:
     metadata:
       labels:
-        app: myapp
+        app: varnish-proxy
     spec:
+      volumes:
+        - name: varnish-config
+          configMap:
+            name: varnish-vcl
+            items:
+              - key: default.vcl
+                path: default.vcl
+        - name: varnish-secret
+          secret:
+            secretName: varnish-secret
       containers:
-      - name: myapp
+      - name: varnish-proxy-application
         image: java/auth0:latest
         imagePullPolicy: Never
         resources:
@@ -33,3 +43,24 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 8080
+      - name: varnish-for-be
+        image: dkruyt/varnish:alpine
+        imagePullPolicy: Always
+        env:
+        - name: CACHE_SIZE
+          value: 128m
+        - name: VCL_CONFIG
+          value: /etc/varnish/configmap/default.vcl
+        - name: SECRET_FILE
+          value: /etc/varnish/k8s-secret/secret
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        volumeMounts:
+          - name: varnish-config
+            mountPath: /etc/varnish/configmap
+          - name: varnish-secret
+            mountPath: /etc/varnish/k8s-secret
+        ports: 
+        - containerPort: 80
