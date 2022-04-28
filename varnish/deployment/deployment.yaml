@@ -6,8 +6,8 @@ spec:
   selector:
     app: varnish-svc
   ports:
-  - port: 6081
-    targetPort: 80
+  - port: 8080
+    targetPort: 8080
 ---
 
 apiVersion: apps/v1
