@@ -1,0 +1,6 @@
+@startuml
+service -> varnishproxy
+varnishproxy -> application
+application --> varnishproxy
+varnishproxy --> service
+@enduml

@@ -52,3 +52,6 @@
         ```
     * docker-compose
   * in local k8s
+    * create k8s configMap for mounting default.vcl
+    ```kubectl create configmap varnish-vcl --from-file=default.vcl```
+    * deploy 
