@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: varnish-svc
 spec:
+  type: NodePort
   selector:
-    app: varnish-svc
+    app: varnish-proxy
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 6081
+    targetPort: 80
 ---
 
 apiVersion: apps/v1
@@ -39,7 +40,7 @@ spec:
         imagePullPolicy: Never
         resources:
           limits:
-            memory: "128Mi"
+            memory: "1Gi"
             cpu: "500m"
         ports:
         - containerPort: 8080
@@ -55,7 +56,7 @@ spec:
           value: /etc/varnish/k8s-secret/secret
         resources:
           limits:
-            memory: "128Mi"
+            memory: "512Mi"
             cpu: "500m"
         volumeMounts:
           - name: varnish-config
