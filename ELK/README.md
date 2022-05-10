@@ -12,7 +12,17 @@
 
 ### EFK elasticsearch fleuntd kibana
 
-## How to use them
+## How to use
+
+### ELK
+
+#### Deploy elasticsearch engine in k8s
+
+* add es-manual.yaml file which includes k8s deployment configuration and service configuration. Service file is used to expose es-manual pod. Then other services can access to elasticsearch service freely.
+
+#### Deploy kibana in k8s
+
+#### Deploy logstash in k8s
 
 ## How difference between them
 
