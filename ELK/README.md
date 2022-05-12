@@ -52,7 +52,11 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy kibana in k8s
 
+* add a [kibana deployment manifest](https://github.com/Fdslk/ops/blob/main/ELK/kibana-elk.yaml) include deployment image and service information. Meanwhile, the elasticsearch expose url should be added into k8s container as environment variable. Like, **ELASTICSEARCH_HOSTS**.
+
 #### Deploy logstash in k8s
+
+#### Deploy Filebeat and Log generating application
 
 ## How difference between them
 

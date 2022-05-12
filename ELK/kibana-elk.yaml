@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  generation: 1
+  labels:
+    app: kib-manual
+  name: kib-manual
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kib-manual
+  template:
+    metadata:
+      labels:
+        app: kib-manual
+    spec:
+      containers:
+      - image: kibana:7.8.0
+        imagePullPolicy: IfNotPresent
+        name: kibana
+        resources: {}
+        env:
+          - name: ELASTICSEARCH_HOSTS
+            value: "http://localhost:32743"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: kib-manual
+  name: kib-manual
+  namespace: default
+  
+spec:
+  ports:
+  - nodePort: 32184
+    port: 5601
+    protocol: TCP
+    targetPort: 5601
+  selector:
+    app: kib-manual
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost
