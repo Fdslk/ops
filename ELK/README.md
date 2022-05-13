@@ -57,6 +57,23 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy logstash in k8s
 
+* add [logstash k8s manifest file](https://github.com/Fdslk/ops/blob/main/ELK/logstash.yaml) and [configuration file](https://github.com/Fdslk/ops/blob/main/ELK/logstash.conf). Based on the first file, we can deploy logstash service in k8s cluster. In the second file, we will define the input and output of the data. logstash.config will be defined as a k8s configMap resource. Then deployment will volume the configMap into k8s pod, which can be used by logstash service.
+  * input the following command to create ConfigMap
+        ```
+        kubectl create configmap logstash-config --from-file ./logstash.conf
+        ```
+  * create deployment
+  * after logstash starts up, we can input ```kubectl logs <pods name> -f``` for obtaining useful log data.
+  
+  ```
+    [2022-05-13T08:18:20,309][INFO ][logstash.outputs.elasticsearch][main] Installing elasticsearch template to _template/logstash
+    [2022-05-13T08:18:21,040][INFO ][logstash.inputs.beats    ][main] Beats inputs: Starting input listener {:address=>"0.0.0.0:5044"}
+    [2022-05-13T08:18:21,057][INFO ][logstash.javapipeline    ][main] Pipeline started {"pipeline.id"=>"main"}
+    [2022-05-13T08:18:21,150][INFO ][logstash.agent           ] Pipelines running {:count=>1, :running_pipelines=>[:main], :non_running_pipelines=>[]}
+    [2022-05-13T08:18:21,194][INFO ][org.logstash.beats.Server][main][be216883a18a1108d5ceab3d012b51b20564d3e53d37fdaf62f0441690df42ff] Starting server on port: 5044
+    [2022-05-13T08:18:21,439][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
+  ```
+
 #### Deploy Filebeat and Log generating application
 
 ## How difference between them

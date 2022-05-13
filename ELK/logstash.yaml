@@ -1,0 +1,53 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: log-manual
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: log-manual
+  template:
+    metadata:
+      labels:
+        name: log-manual
+    spec:
+      hostname: log-manual
+      containers:
+      - image: logstash:7.8.0
+        name: log-manual
+        ports:
+        - containerPort: 5044
+          name: filebeat
+        volumeMounts:
+        - name: logstash-config
+          mountPath: /usr/share/logstash/pipeline/
+        command:
+        - logstash
+      volumes:
+        - name: logstash-config
+          configMap:
+            name: logstash-config
+            items:
+            - key: logstash.conf
+              path: logstash.conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: log-manual
+  namespace: default
+spec:
+  ports:
+  - nodePort: 31752
+    port: 5044
+    protocol: TCP
+    targetPort: 5044
+  selector:
+    name: log-manual
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost
