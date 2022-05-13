@@ -76,6 +76,8 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy Filebeat and Log generating application
 
+* In the end, we will deploy the log collector sidercar, Filebeat. It will collect log data from a sharing log file and send the data to the 
+
 ## How difference between them
 
 ## Conclusions
