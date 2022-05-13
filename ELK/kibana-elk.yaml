@@ -23,9 +23,11 @@ spec:
         imagePullPolicy: IfNotPresent
         name: kibana
         resources: {}
+        ports:
+          - containerPort: 9200
         env:
           - name: ELASTICSEARCH_HOSTS
-            value: "http://192.168.65.4:32743"
+            value: "http://es-manual:9200"
 
 ---
 apiVersion: v1
