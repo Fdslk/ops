@@ -12,3 +12,5 @@
   * [secret](https://github.com/Fdslk/ops/tree/main/k8secret)
 * [varnish](https://github.com/Fdslk/ops/tree/main/varnish)
 * [githooks](https://github.com/Fdslk/ops/tree/main/script)
+* kibana
+ * [ELK](https://github.com/Fdslk/ops/tree/main/ELK)
