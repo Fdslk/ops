@@ -52,7 +52,8 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy kibana in k8s
 
-* add a [kibana deployment manifest](https://github.com/Fdslk/ops/blob/main/ELK/kibana-elk.yaml) include deployment image and service information. Meanwhile, the elasticsearch expose url should be added into k8s container as environment variable. Like, **ELASTICSEARCH_HOSTS**.
+* add a [kibana deployment manifest](https://github.com/Fdslk/ops/blob/main/ELK/kibana-elk.yaml) include deployment image and service information. Meanwhile, the elasticsearch expose url should be added into k8s container as environment variable. Like, **ELASTICSEARCH_HOSTS**. After successfully deploying, command ```curl http://localhost:32184/status``` can be used to check kibana is ready or not. For here, I have question. If I used exposed services ip:port, kibana cannot access to es pods. However, when I used the nodes cluster IP: ```192.168.65.4```. Kibana can communicate with es cluster, which can be shown as following pic2:
+![pic2](https://user-images.githubusercontent.com/6279298/168193484-750f822b-fad8-491c-8d64-3125c5190e2c.png)
 
 #### Deploy logstash in k8s
 

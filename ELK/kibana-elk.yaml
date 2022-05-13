@@ -25,7 +25,7 @@ spec:
         resources: {}
         env:
           - name: ELASTICSEARCH_HOSTS
-            value: "http://localhost:32743"
+            value: "http://192.168.65.4:32743"
 
 ---
 apiVersion: v1
