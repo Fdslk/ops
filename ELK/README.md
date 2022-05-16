@@ -76,7 +76,7 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy Filebeat and Log generating application
 
-* In the end, we will deploy the log collector sidercar, Filebeat. It will collect log data from a sharing log file and send the data to the 
+* In the end, we will deploy the log collector sidercar, Filebeat. It will collect log data from a sharing log file and send the data to the logstash. At first, we need to define [filebeat manifest](https://github.com/Fdslk/ops/blob/main/ELK/filebeat.yml), which will illustrate where does filebeat read log and where does the log write. You can input the command to create configMaps for filebeat configuration ```kubectl create configmap file-beat-config --from-file ./filebeat.yml```. Then this configuration will be volumed into pods.
 
 ## How difference between them
 
