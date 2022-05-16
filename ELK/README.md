@@ -76,7 +76,15 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy Filebeat and Log generating application
 
-* In the end, we will deploy the log collector sidercar, Filebeat. It will collect log data from a sharing log file and send the data to the logstash. At first, we need to define [filebeat manifest](https://github.com/Fdslk/ops/blob/main/ELK/filebeat.yml), which will illustrate where does filebeat read log and where does the log write. You can input the command to create configMaps for filebeat configuration ```kubectl create configmap file-beat-config --from-file ./filebeat.yml```. Then this configuration will be volumed into pods.
+* In the end, we will deploy the log collector sidercar, Filebeat. It will collect log data from a sharing log file and send the data to the logstash. At first, we need to define [filebeat manifest](https://github.com/Fdslk/ops/blob/main/ELK/filebeat.yml), which will illustrate where does filebeat read log and where does the log write. You can input the command to create configMaps for filebeat configuration ```kubectl create configmap file-beat-config --from-file ./filebeat.yml```. Then this configuration will be volumed into pods. When you deploy the log generator application and filebeat application. Then logstash will receive log data from listening port. To check the log system works normally or not. You can open your browser and input ```http://localhost:32184/```, kibana GUI will represent to you as follows **pic3**. In order to see the log information, a **Index Pattern** needs to create at first.
+  * how to create "Index Pattern"
+    * open kibana dashboard
+    * click stack management
+    * click index pattern
+    * create new index pattern like **filebeat***
+![pic3](https://user-images.githubusercontent.com/6279298/168613317-c88bbf58-3af2-4706-8e12-383a321801a5.png)
+
+* At here you have learned how to make a ELK log system on your application.
 
 ## How difference between them
 
