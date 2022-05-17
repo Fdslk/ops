@@ -12,7 +12,9 @@
 
 ![Pic1](https://user-images.githubusercontent.com/6279298/167979333-e95a53ab-c13e-4ceb-bca2-21196a57d3dc.png)
 
-### EFK elasticsearch fleuntd kibana
+### EFK elasticsearch fluentd kibana
+
+&nbsp;&nbsp;&nbsp;&nbsp;**EFK** is a log framewrok and similar to **ELK** log framework. EFK is log agent to collect log data and sends log data to elasticsearch. EFK is supported two endpoints which are **Stackdriver Logging** and **ElasticSearch**. Fluentd is a DeamonSet k8s resource which can be deployed into k8s Nodes as a Deamon Pod. This special pods will manage the pods in the same Nodes. Therefore, **EFK** just needs to deploy elasticsearch Pods, kibana interface Pods, fleuntd DeamonSet.
 
 ## How to use
 
@@ -85,6 +87,20 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 ![pic3](https://user-images.githubusercontent.com/6279298/168613317-c88bbf58-3af2-4706-8e12-383a321801a5.png)
 
 * At here you have learned how to make a ELK log system on your application.
+
+### EFK
+
+#### Deploy elasticsearch
+
+* The same as the former ElasticSearch deployment manifest
+  
+#### Deploy kibana
+
+* The same as the former Kibana deployment manifest
+
+#### Deploy fluentd
+
+* At here, we will define a [DeamonSet manifest to deploy fluentd](https://github.com/Fdslk/ops/blob/main/ELK/fluentd-manual.yml) which deploy a Pods for collecting the Pods log and docker contanier log.
 
 ## How difference between them
 
