@@ -20,7 +20,7 @@
 
 #### Deploy elasticsearch engine in k8s
 
-* add [es-manual.yaml file](https://github.com/Fdslk/ops/blob/main/ELK/es-manual.yaml) which includes k8s deployment configuration and service configuration. Service file is used to expose es-manual pod. Then other services can access to elasticsearch service freely. If you want to run es deployment in your local machine, you might specify the **"discovery.type"** is equal to **"single-node"**. Otherwise, you will get the following errors.
+* add [es-manual.yaml file](https://github.com/Fdslk/ops/blob/main/ELK/es-manual.yaml) which includes k8s deployment configuration and service configuration. Service file is used to expose es-manual pod. Then other services can access to elasticsearch service freely. If you want to run es deployment in your local machine, you might specify the **"discovery.type"** is equal to **"single-node"**. The default discovery.type for elasticsearch is **multi-node**. If es was set as a multi-node cluster, it would to discovery other nodes. Therefore, some discovery configurations need to be set up. Otherwise, you will get the following errors. 
 
 ```
 ERROR: [1] bootstrap checks failed
