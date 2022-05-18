@@ -100,10 +100,7 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy fluentd
 
-* At here, we will define a [DeamonSet manifest to deploy fluentd](https://github.com/Fdslk/ops/blob/main/ELK/fluentd-manual.yml) which deploy a Pods for collecting the Pods log and docker contanier log. If you don't give the read-only permission of the log files, fluentd will be failed to read the logs content and will print the following error:
-  ```
-  2022-05-17 23:51:58 +0000 [warn]: #0 [in_tail_container_logs] /var/log/containers/kube-controller-manager-docker-desktop_kube-system_kube-controller-manager-98b1550fa7760122bb606a4c8e6c93161d0457aaae584619b7b0eec18c17155e.log unreadable. It is excluded and would be examined next time.
-  ```
+* At here, we will define a [DeamonSet manifest to deploy fluentd](https://github.com/Fdslk/ops/blob/main/ELK/fluentd-manual.yml) which deploy a Pods for collecting the Pods log and docker contanier log.
 
 ## How difference between them
 

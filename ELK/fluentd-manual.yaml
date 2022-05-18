@@ -73,7 +73,7 @@ spec:
             value: disable
         resources:
           limits:
-            memory: 200Mi
+            memory: 512Mi
           requests:
             cpu: 100m
             memory: 200Mi
@@ -81,13 +81,13 @@ spec:
         - name: varlog
           mountPath: /var/log
         # When actual pod logs in /var/lib/docker/containers, the following lines should be used.
-        # - name: dockercontainerlogdirectory
-        #   mountPath: /var/lib/docker/containers
-        #   readOnly: true
-        # When actual pod logs in /var/log/pods, the following lines should be used.
         - name: dockercontainerlogdirectory
-          mountPath: /var/log/pods
+          mountPath: /var/lib/docker/containers
           readOnly: true
+        # When actual pod logs in /var/log/pods, the following lines should be used.
+        # - name: dockercontainerlogdirectory
+        #   mountPath: /var/log/pods
+        #   readOnly: true
       terminationGracePeriodSeconds: 30
       volumes:
       - name: varlog
