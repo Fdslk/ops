@@ -100,7 +100,10 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy fluentd
 
-* At here, we will define a [DeamonSet manifest to deploy fluentd](https://github.com/Fdslk/ops/blob/main/ELK/fluentd-manual.yml) which deploy a Pods for collecting the Pods log and docker contanier log.
+* At here, we will define a [DeamonSet manifest to deploy fluentd](https://github.com/Fdslk/ops/blob/main/ELK/fluentd-manual.yml) which deploy a Pods for collecting the Pods log and docker contanier log. If everything is set up correctly, you will see the following pic after input KQL ```kubernetes.namespace_name : "default"```.
+  ![pic4](https://user-images.githubusercontent.com/6279298/169063264-d1088d57-00b4-4be7-b168-7597dcf4706c.png)
+
+#### Deploy business service application
 
 ## How difference between them
 
