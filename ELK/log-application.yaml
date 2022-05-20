@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  generation: 1
+  labels:
+    app: log-application
+  name: log-application
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-application
+  template:
+    metadata:
+      labels:
+        app: log-application
+    spec:
+      containers:
+      - image: local/newrelicjava
+        imagePullPolicy: Never
+        name: log-application
+        resources: {}
+        ports:
+          - containerPort: 8080

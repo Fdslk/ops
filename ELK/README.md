@@ -105,6 +105,9 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
 
 #### Deploy business service application
 
+* In our daliy delievery, we always deploy our application in k8s. Take [log-application.yaml](https://github.com/Fdslk/ops/blob/main/ELK/fluentd-manual.yml) as an example, we use **slf4j.Logger** to print log on the application console. When a request hits the log-application, it will print its stdout on the console, which will be scaned by fluentd and it will send the log data to ElasticSearch. The following picture **pic5** will be represented.
+  ![pic6](https://user-images.githubusercontent.com/6279298/169491169-7d6b4a79-9e18-4116-8be8-03ece9fe25a5.png)
+
 ## How difference between them
 
 ## Conclusions
