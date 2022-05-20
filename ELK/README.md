@@ -3,6 +3,7 @@
 ***author: zengqiang fang***
 
 ## Backgroud
+&nbsp;&nbsp;&nbsp;&nbsp; During our daily working, application status, the content of http request and response, exception message, etc, which are very useful to us for debugging online issues and monitering applications. Therefore, it is necessary to collect log data and visualize log records picture. In the past, we recorded log information into log file. Then, we logined to server to check log information or downloaded log file. According to this way, it is not only very hard to analyze log in real timem, but also it is too diffcult to search or filter log by key words. 
 
 ## Logs management frameworks
 
