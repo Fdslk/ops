@@ -118,17 +118,21 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
   * In **ELK** framework, the core feature is the logstash. Logstash just likes a log transportion center which can re-process the format, filter and enrichment of logs. It's very memory-consuming. We can't deploy a logstash into a container with other logging application. Therefore, filebeat, lightweight log collector works as a log agent to send log to logstash.
   * In **EFK** framework, fluentd is the core feature. fluentd is deployed k8s cluster as a DeamonSet resource, which can collect the node metrics and log. And it doesn't need to another log transportion agents. Only if fluentd is set enought permission, the container and nodes log can be collected directly.
 * **log agent performance**
-  * **logstash**
-    * Why logstash doesn't collect log from container directly
-  * **fluentd**
-    * Collecting log data directly
-* **Resource usage**
+  * logstash is written by JRuby and runs on JVM.
+  * fluentd is written by CRuby, which consumes less memory than logstash.
 * **Configuration**
-  * logstash configuration manifest
+  * logstash
+    * You can add your own manifest to set up input and output rules, log format, etc.
   * fluentd
     * [fluentd UI browser](https://docs.fluentd.org/deployment/fluentd-ui) (Install, uninstall, and upgrade Fluentd plugins)
     * [Dockerfile](https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/docker-image/v1.14/debian-elasticsearch7/Dockerfile)
 * **Usage scenarios**
+  * For **ELK**, it needs more memory. Therefore, logstash might not suitable for the low-memory machine. On the other hand, **EFK** just consumes less memeory. In my opinion, EFK might have a wide range of application.
+* More information
+  * If you want to get more comparison information, you can take the following references a look.
+  * [Difference Between Fluentd vs Logstash](https://www.educba.com/fluentd-vs-logstash/?source=leftnav)
+  * [Kubernetes Logging: Comparing Fluentd vs. Logstash](https://platform9.com/blog/kubernetes-logging-comparing-fluentd-vs-logstash/)
+  * [Fluentd vs. LogStash: A Feature Comparison](https://www.loomsystems.com/blog/single-post/2017/01/30/a-comparison-of-fluentd-vs-logstash-log-collector)
 
 ## **Conclusions**
 * log-centralized
