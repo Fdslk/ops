@@ -135,8 +135,9 @@ ERROR: Elasticsearch did not exit normally - check the logs at /usr/share/elasti
   * [Fluentd vs. LogStash: A Feature Comparison](https://www.loomsystems.com/blog/single-post/2017/01/30/a-comparison-of-fluentd-vs-logstash-log-collector)
 
 ## **Conclusions**
-* log-centralized
-* real-time
+&nbsp;&nbsp;&nbsp;&nbsp;According to this article, two popular log frameworks, **ELK**&**EFK** are introducted to you. Nowatodays, application system is significant to our daily development, production troubleshooting, and product issue back-track for finding root result. What's more, with the log platform generating, several **advantages** comes up to my mind: 
+* **log-centralized**, with the above two log frameworks, the log of application, docker container and nodes cluster are gathered into one place. As log centralizes, our debuging becomes more and more easily.
+* **real-time**, log agent, logstash and fluentd will almost send system log to ES in real-time. Because of their real-time file content and port listening, 
 * visualization
 * open-reource and active communities for supporting unknow issues
 * 
