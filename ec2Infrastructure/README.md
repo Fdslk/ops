@@ -300,3 +300,5 @@
     ```
 
     * ![screenshot](https://user-images.githubusercontent.com/6279298/173497140-f145d4f5-9e4a-41ff-b777-556d4e6b7cb0.png)
+* connect to ec2 instance by ssh
+  ```ssh -i "key-pair.pem" ec2-user@<public-ip>```
