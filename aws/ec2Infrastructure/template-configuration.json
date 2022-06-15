@@ -1,0 +1,21 @@
+{
+    "NetworkInterfaces": [{
+        "AssociatePublicIpAddress": true,
+        "DeviceIndex": 0,
+        "Ipv6AddressCount": 1,
+        "SubnetId": "subnet-7b16de0c"
+    }],
+    "ImageId": "ami-8c1be5f6",
+    "InstanceType": "r4.4xlarge",
+    "TagSpecifications": [{
+        "ResourceType": "instance",
+        "Tags": [{
+            "Key":"Name",
+            "Value":"webserver"
+        }]
+    }],
+    "CpuOptions": {
+        "CoreCount":4,
+        "ThreadsPerCore":2
+    }
+}
